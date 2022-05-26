@@ -5,8 +5,8 @@
 This is a simple html css website to document my learning carve.
 
 #### To do.
-Add Navbar.
+1.Add Navbar.
 
-Contact form 
+2.Contact form. 
 
-Quality images.
+3.Quality images.
