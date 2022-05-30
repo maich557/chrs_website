@@ -7,7 +7,7 @@ This is a work in progress simple html css website for Consolidated Human Resour
 #### To do:-
 1.~~Add Navbar.~~
 
-2.~~Contact form and sync the contact form to googlesheets.
+2.~~Contact form and sync the contact form to googlesheets.~~
 
 3.Quality images.
 
