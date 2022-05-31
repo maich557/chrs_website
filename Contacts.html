@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consolidated HR Solutions</title>
     <link rel="stylesheet" href="style.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <!--Navbar Section-->
@@ -25,24 +26,46 @@
         </div>
     </nav>
     <!--Contact Form-->
-    <div class="contact__form">
-        <br>
-        <br>
-            <script type="text/javascript">var submitted=false;</script>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted){
-                window.location='/index.html';}"></iframe>
-            <div class="container">
-                <div class="box">
-                        <h1>Contact form</h1>
-                        <form action="https://docs.google.com/forms/d/e/1FAIpQLScbvBiS3Tw6h2xt6vLk9v-z8JhX5LJzH0w-P8d4_in0AGWxug/formResponse" target="hidden_iframe" onsubmit="submitted=true" method="POST">
-                        <input type="text" placeholder="Name" name="1429292503"><br>
-                        <input type="email" placeholder="Email address" name="275779765"><br>
-                        <input type="text" placeholder="Message" name="145141448"><br>
-                        <input type="submit" value="Submit"><br>
-                    </form
-                </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
+                <h2 class="text-center fw-bold mb-3">Contact Us</h2>
+                <form name="google-sheet">
+                    <div id="form_alerts"></div>
+                    <div class="form-group mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="Email" id="Email" name="Email" class="form-control" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Message" class="form-label">Message</label>
+                        <textarea id="Message" name="Message" class="form-control" placeholder="Enter your message" rows="5" required></textarea>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" type="submit">Send message!</button>
+                        <button class="btn btn-danger" type="reset">Reset the form!</button>
+                    </div>
+                </form>
             </div>
+        </div>
     </div>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxX3_EoDRysLb8IfZR2j-mdWjy6_gUttZtJCkFUmBSo_FrJKl44cAi_gtRtjVRazfm9/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Message sent successfully. Thank You For Contacting Us!</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Message not sent.</div>"))
+        })
+    </script>
 
 <!--Footer-->
 <div class="footer">
@@ -62,5 +85,6 @@
 </div>
 </div>
 <script src="app.js"></script>
+
 </body>
 </html>
